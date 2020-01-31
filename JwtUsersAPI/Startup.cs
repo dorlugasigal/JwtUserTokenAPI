@@ -15,9 +15,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using JwtUsersAPI.Controllers;
+using JwtUsersAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.Swagger;
@@ -53,7 +55,8 @@ namespace JwtUsersAPI
             services.AddApiVersioning();
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
-            // configure strongly typed settings objects
+            services.AddDbContext<UsersContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
