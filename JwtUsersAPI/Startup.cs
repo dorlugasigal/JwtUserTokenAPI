@@ -16,6 +16,8 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using JwtUsersAPI.Controllers;
 using JwtUsersAPI.Data;
+using JwtUsersAPI.Entities;
+using JwtUsersAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -59,7 +61,6 @@ namespace JwtUsersAPI
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
-
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
@@ -82,9 +83,9 @@ namespace JwtUsersAPI
                 });
 
             // configure DI for application services
+            services.AddScoped<IRepository<User>, UsersRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddAutoMapper(typeof(Startup));
-
 
             var securityScheme = new OpenApiSecurityScheme()
             {

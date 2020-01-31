@@ -7,6 +7,7 @@ using System.Text;
 using AutoMapper;
 using JwtUsersAPI.Entities;
 using JwtUsersAPI.Helpers;
+using JwtUsersAPI.Repositories;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -22,10 +23,12 @@ namespace JwtUsersAPI.Services
 
         private readonly AppSettings _appSettings;
         private readonly IMapper _mapper;
+        private readonly IRepository<User> _repository;
 
-        public UserService(IOptions<AppSettings> appSettings, IMapper mapper)
+        public UserService(IOptions<AppSettings> appSettings, IMapper mapper, IRepository<User> repository)
         {
             _mapper = mapper;
+            _repository = repository;
             _appSettings = appSettings.Value;
         }
 
