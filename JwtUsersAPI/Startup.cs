@@ -44,9 +44,6 @@ namespace JwtUsersAPI
             Configuration = configuration;
         }
 
-        /// <summary>
-        /// Configuration of the main Api
-        /// </summary>
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.

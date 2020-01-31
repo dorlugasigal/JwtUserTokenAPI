@@ -1,40 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
+using JwtUsersAPI.Data;
 using JwtUsersAPI.Entities;
 using JwtUsersAPI.Helpers;
 using JwtUsersAPI.Repositories;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace JwtUsersAPI.Services
 {
     public class UserService : IUserService
     {
-        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private readonly List<User> _users = new List<User>
-        {
-            new User { Id = 1, UserName = "test", Password = "test" }
-        };
+
 
         private readonly AppSettings _appSettings;
         private readonly IMapper _mapper;
         private readonly IRepository<User> _repository;
+        private readonly UsersContext _context;
 
-        public UserService(IOptions<AppSettings> appSettings, IMapper mapper, IRepository<User> repository)
+        public UserService(IOptions<AppSettings> appSettings, IMapper mapper, IRepository<User> repository, UsersContext context)
         {
             _mapper = mapper;
             _repository = repository;
+            _context = context;
             _appSettings = appSettings.Value;
         }
 
         public UserToReturn Authenticate(string username, string password)
         {
-            var user = _users.SingleOrDefault(x => x.UserName == username && x.Password == password);
+            var user = _context.Users.SingleOrDefault(x => x.UserName == username && x.Password == password);
 
             // return null if user not found
             if (user == null)
@@ -58,9 +58,36 @@ namespace JwtUsersAPI.Services
             return _mapper.Map<UserToReturn>(user);
         }
 
-        public IEnumerable<UserToReturn> GetAll()
+        public async Task<List<UserToReturn>> GetAll()
         {
-            var ret = _mapper.Map<List<UserToReturn>>(_users);
+            var res = await _repository.GetAll();
+            var ret = _mapper.Map<List<UserToReturn>>(res);
+            return ret;
+        }
+
+        public async Task<UserToReturn> Get(int id)
+        {
+            var res = await _repository.Get(id);
+            var ret = _mapper.Map<UserToReturn>(res);
+            return ret;
+        }
+
+        public async Task<UserToReturn> Add(User entity)
+        {
+            var res = await _repository.Add(entity);
+            var ret = _mapper.Map<UserToReturn>(res);
+            return ret;
+        }
+
+        public async Task<bool> Update(User entity)
+        {
+            var ret = await _repository.Update(entity);
+            return ret;
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            var ret = await _repository.Delete(id);
             return ret;
         }
     }
