@@ -4,6 +4,9 @@ using JwtUsersAPI.Entities;
 
 namespace JwtUsersAPI.Services
 {
+    /// <summary>
+    /// User Service interface for basic methods
+    /// </summary>
     public interface IUserService
     {
         UserToReturn Authenticate(string username, string password);
