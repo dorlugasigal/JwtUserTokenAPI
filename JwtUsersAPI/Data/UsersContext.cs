@@ -1,4 +1,5 @@
 ﻿using System;
+using JwtUsersAPI.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -14,6 +15,7 @@ namespace JwtUsersAPI.Data
             : base(options)
         {
         }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
