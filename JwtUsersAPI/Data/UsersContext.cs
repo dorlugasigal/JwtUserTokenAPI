@@ -1,16 +1,33 @@
-﻿using JwtUsersAPI.Entities;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace JwtUsersAPI.Data
 {
-    public class UsersContext : DbContext
+    public partial class UsersContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public UsersContext()
+        {
+        }
+
+        public UsersContext(DbContextOptions<UsersContext> options)
+            : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql("server=users-server.cs3ik4npwdjp.us-east-2.rds.amazonaws.com;database=Users;uid=admin;pwd=Aa123456", x => x.ServerVersion("8.0.16-mysql"));
+            }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
