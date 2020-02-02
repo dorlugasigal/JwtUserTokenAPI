@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Projects\\JwtUserTokenAPI\\JwtUsersAPI\\JwtUsersAPI.csproj",
         "projectName": "JwtUsersAPI",
         "projectPath": "C:\\Projects\\JwtUserTokenAPI\\JwtUsersAPI\\JwtUsersAPI.csproj",
-        "packagesPath": "C:\\Users\\dorlu\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\dlugasi\\.nuget\\packages\\",
         "outputPath": "C:\\Projects\\JwtUserTokenAPI\\JwtUsersAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\dorlu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dlugasi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -104,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

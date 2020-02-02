@@ -13,10 +13,11 @@ namespace JwtUsersAPI.Repositories
         private readonly UsersContext _context;
         private readonly ILogger _logger;
 
-        public UsersRepository(UsersContext context, ILogger logger)
+        public UsersRepository()
         {
-            _context = context;
-            _logger = logger;
+            //UsersContext context,
+            _context = null;
+            //_logger = logger;
         }
 
         public async Task<List<User>> GetAll()
@@ -27,7 +28,7 @@ namespace JwtUsersAPI.Repositories
             }
             catch (System.Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex, ex.Message);
+                //_logger.Log(LogLevel.Error, ex, ex.Message);
                 return null;
             }
         }
@@ -40,7 +41,7 @@ namespace JwtUsersAPI.Repositories
             }
             catch (System.Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex, ex.Message);
+                //_logger.Log(LogLevel.Error, ex, ex.Message);
                 return null;
             }
         }
@@ -55,7 +56,7 @@ namespace JwtUsersAPI.Repositories
             }
             catch (System.Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex, ex.Message);
+                //_logger.Log(LogLevel.Error, ex, ex.Message);
                 return null;
             }
         }
@@ -75,7 +76,7 @@ namespace JwtUsersAPI.Repositories
             }
             catch (System.Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex, ex.Message);
+                //_logger.Log(LogLevel.Error, ex, ex.Message);
                 return false;
             }
         }
@@ -96,7 +97,7 @@ namespace JwtUsersAPI.Repositories
             }
             catch (System.Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex, ex.Message);
+                //_logger.Log(LogLevel.Error, ex, ex.Message);
                 return false;
             }
         }

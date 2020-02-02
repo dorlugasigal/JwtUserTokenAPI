@@ -1,31 +1,23 @@
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using AutoMapper;
+using JwtUsersAPI.Entities;
 using JwtUsersAPI.Helpers;
+using JwtUsersAPI.Repositories;
 using JwtUsersAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
-using JwtUsersAPI.Controllers;
-using JwtUsersAPI.Data;
-using JwtUsersAPI.Entities;
-using JwtUsersAPI.Repositories;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Swashbuckle.Swagger;
-using IOperationFilter = Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
 
 
 namespace JwtUsersAPI
@@ -54,7 +46,7 @@ namespace JwtUsersAPI
             services.AddApiVersioning();
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
-            services.AddDbContext<UsersContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            //services.AddDbContext<UsersContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);

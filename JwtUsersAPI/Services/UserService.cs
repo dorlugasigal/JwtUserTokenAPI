@@ -18,17 +18,17 @@ namespace JwtUsersAPI.Services
     public class UserService : IUserService
     {
 
-
         private readonly AppSettings _appSettings;
         private readonly IMapper _mapper;
         private readonly IRepository<User> _repository;
         private readonly UsersContext _context;
 
-        public UserService(IOptions<AppSettings> appSettings, IMapper mapper, IRepository<User> repository, UsersContext context)
+        public UserService(IOptions<AppSettings> appSettings, IMapper mapper, IRepository<User> repository)
         {
+            //UsersContext context
             _mapper = mapper;
             _repository = repository;
-            _context = context;
+            _context = null;//context;
             _appSettings = appSettings.Value;
         }
 

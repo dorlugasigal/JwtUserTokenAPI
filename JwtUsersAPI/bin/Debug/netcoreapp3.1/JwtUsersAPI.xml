@@ -14,6 +14,11 @@
             Version 2 of the UsersController
             </summary>
         </member>
+        <member name="T:JwtUsersAPI.Services.IUserService">
+            <summary>
+            User Service interface for basic methods
+            </summary>
+        </member>
         <member name="T:JwtUsersAPI.Startup">
             <summary>
             Main Startup class
@@ -24,11 +29,6 @@
             startup constructor
             </summary>
             <param name="configuration"></param>
-        </member>
-        <member name="P:JwtUsersAPI.Startup.Configuration">
-            <summary>
-            Configuration of the main Api
-            </summary>
         </member>
     </members>
 </doc>
