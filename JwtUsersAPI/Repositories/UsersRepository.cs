@@ -81,24 +81,24 @@ namespace JwtUsersAPI.Repositories
             }
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<User> Delete(int id)
         {
             try
             {
                 var user = await _context.Users.FindAsync(id);
                 if (user == null)
                 {
-                    return false;
+                    return null;
                 }
 
                 _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
-                return true;
+                return user;
             }
             catch (System.Exception ex)
             {
                 //_logger.Log(LogLevel.Error, ex, ex.Message);
-                return false;
+                return null;
             }
         }
     }

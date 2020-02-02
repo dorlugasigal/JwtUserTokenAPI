@@ -10,6 +10,6 @@ namespace JwtUsersAPI.Repositories
         Task<T> Get(int id);
         Task<T> Add(T entity);
         Task<bool> Update(T entity);
-        Task<bool> Delete(int id);
+        Task<T> Delete(int id);
     }
 }

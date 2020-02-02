@@ -18,6 +18,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using JwtUsersAPI.Data;
 
 
 namespace JwtUsersAPI
@@ -45,6 +46,7 @@ namespace JwtUsersAPI
             services.AddControllers();
             services.AddApiVersioning();
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
+            services.AddDbContext<UsersContext>();
 
             //services.AddDbContext<UsersContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 

@@ -85,10 +85,17 @@ namespace JwtUsersAPI.Services
             return ret;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<UserToReturn> Delete(int id)
         {
-            var ret = await _repository.Delete(id);
+            var res = await _repository.Delete(id);
+            var ret = _mapper.Map<UserToReturn>(res);
             return ret;
+        }
+
+        public async Task<bool> UserExists(int id)
+        {
+            var res = await _repository.Get(id);
+            return res != null;
         }
     }
 }

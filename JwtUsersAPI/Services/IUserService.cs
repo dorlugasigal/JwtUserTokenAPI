@@ -14,6 +14,7 @@ namespace JwtUsersAPI.Services
         Task<UserToReturn> Get(int id);
         Task<UserToReturn> Add(User entity);
         Task<bool> Update(User entity);
-        Task<bool> Delete(int id);
+        Task<UserToReturn> Delete(int id);
+        Task<bool> UserExists(int id);
     }
 }
