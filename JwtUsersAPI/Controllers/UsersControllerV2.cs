@@ -97,10 +97,8 @@ namespace JwtUsersAPI.Controllers
             {
                 return NotFound();
             }
-            else
-            {
-                return Ok(user);
-            }
+            return Ok(user);
+
         }
 
     }
