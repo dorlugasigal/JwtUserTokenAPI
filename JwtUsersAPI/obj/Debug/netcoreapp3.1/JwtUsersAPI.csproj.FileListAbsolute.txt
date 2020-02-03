@@ -184,3 +184,4 @@ C:\Projects\JwtUserTokenAPI\JwtUsersAPI\bin\Debug\netcoreapp3.1\zh-Hans\Microsof
 C:\Projects\JwtUserTokenAPI\JwtUsersAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Projects\JwtUserTokenAPI\JwtUsersAPI\obj\Debug\netcoreapp3.1\JwtUsersAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\JwtUserTokenAPI\JwtUsersAPI\obj\Debug\netcoreapp3.1\JwtUsersAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\JwtUserTokenAPI\JwtUsersAPI\bin\Debug\netcoreapp3.1\aws-ecs-tools-defaults.json
