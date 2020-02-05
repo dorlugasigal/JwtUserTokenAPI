@@ -74,8 +74,8 @@ namespace JwtUsersAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            await _userService.Add(user);
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            var ret = await _userService.Add(user);
+            return StatusCode(201, ret);
         }
 
         // DELETE: api/Users1/5
