@@ -13,10 +13,9 @@ namespace JwtUsersAPI.Repositories
         private readonly UsersContext _context;
         private readonly ILogger _logger;
 
-        public UsersRepository()
+        public UsersRepository(UsersContext context)
         {
-            //UsersContext context,
-            _context = null;
+            _context = context;
             //_logger = logger;
         }
 
