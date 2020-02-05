@@ -1,5 +1,4 @@
-﻿using System;
-using JwtUsersAPI.Entities;
+﻿using JwtUsersAPI.Entities;
 using JwtUsersAPI.Models;
 using JwtUsersAPI.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -68,17 +67,14 @@ namespace JwtUsersAPI.Controllers
                 return NoContent();
             }
             return NotFound();
-
         }
 
         [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user, ApiVersion apiVersion)
         {
-
             var ret = await _userService.Add(user);
             return CreatedAtAction(nameof(GetUser), new { id = user.Id, version = apiVersion.ToString() }, ret);
-
         }
 
         // DELETE: api/Users1/5
@@ -91,8 +87,6 @@ namespace JwtUsersAPI.Controllers
                 return NotFound();
             }
             return Ok(user);
-
         }
-
     }
 }
