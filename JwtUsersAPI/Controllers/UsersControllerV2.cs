@@ -70,6 +70,7 @@ namespace JwtUsersAPI.Controllers
 
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
